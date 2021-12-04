@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_detail_donate.xml" value="0.25" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate.xml" value="0.25" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate_activities.xml" value="0.25" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_done_donate.xml" value="0.25" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_help_donate.xml" value="0.25" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/ic_baseline_supervised_user_circle_24.xml" value="0.12708333333333333" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/menu/menu_main.xml" value="0.12708333333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

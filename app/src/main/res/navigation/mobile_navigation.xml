@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_donate">
+
+    <fragment
+        android:id="@+id/navigation_help_donate"
+        android:name="com.vti.charityprojectmock11.view.home.HelpDonateFragment"
+        android:label="@string/help_donate"
+        tools:layout="@layout/fragment_help_donate" />
+
+    <fragment
+        android:id="@+id/navigation_donate"
+        android:name="com.vti.charityprojectmock11.view.home.DonateFragment"
+        android:label="@string/donate"
+        tools:layout="@layout/fragment_donate" >
+        <action
+            android:id="@+id/action_navigation_donate_to_detailDonateFragment"
+            app:destination="@id/detailDonateFragment"
+            app:popExitAnim="@anim/anim_transition_out_right"
+            app:popEnterAnim="@anim/anim_transition_in_right"
+            app:exitAnim="@anim/anim_transition_out_left"
+            app:enterAnim="@anim/anim_transition_in_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_done_donate"
+        android:name="com.vti.charityprojectmock11.view.home.DoneDonateFragment"
+        android:label="@string/done_donate"
+        tools:layout="@layout/fragment_done_donate" />
+    <fragment
+        android:id="@+id/detailDonateFragment"
+        android:name="com.vti.charityprojectmock11.view.detail.DetailDonateFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_detail_donate" >
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="Title" />
+    </fragment>
+</navigation>
