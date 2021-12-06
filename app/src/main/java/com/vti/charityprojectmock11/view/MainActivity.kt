@@ -1,7 +1,6 @@
 package com.vti.charityprojectmock11.view
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -10,7 +9,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.vti.charityprojectmock11.R
 import com.vti.charityprojectmock11.databinding.ActivityMainBinding
-import com.vti.charityprojectmock11.viewmodel.detail.DetailDonateViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

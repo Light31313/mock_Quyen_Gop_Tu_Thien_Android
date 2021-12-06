@@ -5,15 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayoutMediator
+import com.vti.charityprojectmock11.adapter.DetailDonateFragmentAdapter
 import com.vti.charityprojectmock11.databinding.FragmentDetailDonateBinding
-import com.vti.charityprojectmock11.viewmodel.detail.DetailDonateViewModel
+
 
 
 class DetailDonateFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailDonateBinding
-    private val viewModel: DetailDonateViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +29,13 @@ class DetailDonateFragment : Fragment() {
     }
 
     private fun initComponent() {
-        binding.viewModel = viewModel
+        val tabNames = arrayOf("Nội Dung", "Nhà Hảo Tâm", "Quyên Góp")
+
+        val adapter = DetailDonateFragmentAdapter(this)
+        binding.viewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = tabNames[position]
+        }.attach()
     }
 }
