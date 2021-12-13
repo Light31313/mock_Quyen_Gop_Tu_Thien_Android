@@ -6,17 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vti.charityprojectmock11.view.detail.tabdetail.adapter.DetailDonateFragmentAdapter
 import com.vti.charityprojectmock11.databinding.FragmentDetailDonateBinding
-
+import com.vti.charityprojectmock11.viewmodel.detail.DetailDonateViewModel
 
 
 class DetailDonateFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailDonateBinding
     private val args: DetailDonateFragmentArgs by navArgs()
+    private val viewModel: DetailDonateViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,5 +43,7 @@ class DetailDonateFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = tabNames[position]
         }.attach()
+
+        viewModel.setDonateProgram(args.donateProgram)
     }
 }
