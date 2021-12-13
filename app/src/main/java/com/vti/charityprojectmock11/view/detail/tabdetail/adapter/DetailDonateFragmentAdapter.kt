@@ -1,4 +1,4 @@
-package com.vti.charityprojectmock11.adapter
+package com.vti.charityprojectmock11.view.detail.tabdetail.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

@@ -33,11 +33,9 @@
     <fragment
         android:id="@+id/detailDonateFragment"
         android:name="com.vti.charityprojectmock11.view.detail.DetailDonateFragment"
-        android:label="{title}"
         tools:layout="@layout/fragment_detail_donate" >
         <argument
-            android:name="title"
-            app:argType="string"
-            android:defaultValue="Title" />
+            android:name="donateProgram"
+            app:argType="com.vti.charityprojectmock11.model.DonateProgram" />
     </fragment>
 </navigation>
