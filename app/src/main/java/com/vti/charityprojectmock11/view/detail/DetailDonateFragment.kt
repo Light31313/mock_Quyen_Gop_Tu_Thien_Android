@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
-import com.vti.charityprojectmock11.adapter.DetailDonateFragmentAdapter
+import com.vti.charityprojectmock11.view.detail.tabdetail.adapter.DetailDonateFragmentAdapter
 import com.vti.charityprojectmock11.databinding.FragmentDetailDonateBinding
 
 
@@ -14,6 +16,7 @@ import com.vti.charityprojectmock11.databinding.FragmentDetailDonateBinding
 class DetailDonateFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailDonateBinding
+    private val args: DetailDonateFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +32,9 @@ class DetailDonateFragment : Fragment() {
     }
 
     private fun initComponent() {
-        val tabNames = arrayOf("Nội Dung", "Nhà Hảo Tâm", "Quyên Góp")
+        (activity as AppCompatActivity).supportActionBar?.title = args.donateProgram.name
 
+        val tabNames = arrayOf("Nội Dung", "Nhà Hảo Tâm", "Quyên Góp")
         val adapter = DetailDonateFragmentAdapter(this)
         binding.viewPager.adapter = adapter
 

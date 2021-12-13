@@ -2,27 +2,24 @@ package com.vti.charityprojectmock11.view.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.vti.charityprojectmock11.base.BaseFragment
 import com.vti.charityprojectmock11.databinding.FragmentHelpDonateBinding
 import com.vti.charityprojectmock11.viewmodel.home.HelpDonateViewModel
 
-class HelpDonateFragment : Fragment() {
+class HelpDonateFragment : BaseFragment<FragmentHelpDonateBinding>() {
     private val viewModel: HelpDonateViewModel by viewModels()
-    private lateinit var binding: FragmentHelpDonateBinding
 
-    override fun onCreateView(
+    override fun createBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHelpDonateBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): FragmentHelpDonateBinding =
+        FragmentHelpDonateBinding.inflate(layoutInflater, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initComponent() {
         binding.viewModel = viewModel
     }
+
 }
