@@ -14,4 +14,6 @@
     <string name="time_remain"> còn %d ngày </string>
     <string name="new_program">Các chương trình mới</string>
     <string name="current_program">Các chương trình đang diễn ra</string>
+    <string name="stop">Đã kết thúc</string>
+    <string name="stop_program">Các chương trình đã kết thúc</string>
 </resources>

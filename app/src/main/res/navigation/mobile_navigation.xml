@@ -29,7 +29,11 @@
         android:id="@+id/navigation_done_donate"
         android:name="com.vti.charityprojectmock11.view.home.DoneDonateFragment"
         android:label="@string/done_donate"
-        tools:layout="@layout/fragment_done_donate" />
+        tools:layout="@layout/fragment_done_donate" >
+        <action
+            android:id="@+id/action_navigation_done_donate_to_detailDonateFragment"
+            app:destination="@id/detailDonateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailDonateFragment"
         android:name="com.vti.charityprojectmock11.view.detail.DetailDonateFragment"

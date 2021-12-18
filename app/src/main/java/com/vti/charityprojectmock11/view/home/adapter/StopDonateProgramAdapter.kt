@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.vti.charityprojectmock11.databinding.ItemDonateProgramBinding
+import com.vti.charityprojectmock11.databinding.ItemStopDonateProgramBinding
 import com.vti.charityprojectmock11.model.DonateProgram
 
-class DonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
-    ListAdapter<DonateProgram, DonateProgramAdapter.DonateProgramViewHolder>(DiffCallback) {
+class StopDonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
+    ListAdapter<DonateProgram, StopDonateProgramAdapter.DonateProgramViewHolder>(DiffCallback) {
 
     inner class DonateProgramViewHolder(
-        private val binding: ItemDonateProgramBinding
+        private val binding: ItemStopDonateProgramBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(donateProgram: DonateProgram) = with(binding) {
@@ -27,7 +27,7 @@ class DonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DonateProgramViewHolder {
         val binding =
-            ItemDonateProgramBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemStopDonateProgramBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DonateProgramViewHolder(binding)
 
     }
