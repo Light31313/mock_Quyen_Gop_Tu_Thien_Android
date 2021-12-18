@@ -12,9 +12,11 @@ import retrofit2.Response
 
 class DonateViewModel : ViewModel() {
 
-    private val _donatePrograms = MutableLiveData<List<DonateProgram>>()
+    private val _donatePrograms = MutableLiveData<List<DonateProgram>>(listOf())
     val donatePrograms: LiveData<List<DonateProgram>>
         get() = _donatePrograms
+    val totalPrograms
+        get() = _donatePrograms.value?.size
 
     fun getAllDonatePrograms(){
         DonateProgramRepository.getAllDonatePrograms().enqueue(object:
