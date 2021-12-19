@@ -1,15 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.detail.tabdetail.ProgramFragment">
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="program"
-        android:layout_gravity="center"
-        android:textSize="24sp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6EAF0"
+        tools:context=".view.detail.tabdetail.ProgramFragment">
 
-</FrameLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_program_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator_progam"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            app:ci_drawable="@drawable/indicator_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_program_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:text="Chung tay hỗ trợ nghiên cứu và sản xuất cho dịch bênh"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/vp_program_img" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="30dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="30dp"
+            android:text="51.000.000/100.000.000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:id="@+id/pb_program_process"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="30dp"
+            android:progress="25"
+            android:progressTint="@color/pink"
+            android:max="100"
+            app:layout_constraintTop_toBottomOf="@id/tv_process" />
+
+        <TextView
+            android:id="@+id/tv_donation_amount_label"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:text="Lượt quyên góp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_currrent_donation_amount_label"
+            app:layout_constraintTop_toBottomOf="@id/pb_program_process" />
+
+        <TextView
+            android:id="@+id/tv_currrent_donation_amount_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đạt được"
+            app:layout_constraintRight_toLeftOf="@id/tv_expire_time_label"
+            app:layout_constraintLeft_toRightOf="@id/tv_donation_amount_label"
+            app:layout_constraintTop_toTopOf="@id/tv_donation_amount_label" />
+
+        <TextView
+            android:id="@+id/tv_expire_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời hạn còn"
+            android:layout_marginRight="30dp"
+            app:layout_constraintLeft_toRightOf="@id/tv_currrent_donation_amount_label"
+            app:layout_constraintTop_toTopOf="@id/tv_donation_amount_label"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tv_donation_amount"
+            android:text="1234"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_donation_amount_label"
+            app:layout_constraintLeft_toLeftOf="@id/tv_donation_amount_label"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tv_current_donation_amount"
+            android:text="51%"
+            app:layout_constraintTop_toTopOf="@id/tv_donation_amount"
+            app:layout_constraintLeft_toLeftOf="@id/tv_currrent_donation_amount_label"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tv_expire_time"
+            android:text="27 ngày"
+            app:layout_constraintTop_toTopOf="@id/tv_donation_amount"
+            app:layout_constraintLeft_toLeftOf="@id/tv_expire_time_label"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_donation"
+            app:layout_constraintTop_toBottomOf="@id/tv_donation_amount"
+            android:text="Quyên góp"
+            android:backgroundTint="@color/pink"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
