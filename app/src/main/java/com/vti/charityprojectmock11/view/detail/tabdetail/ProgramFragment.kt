@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.vti.charityprojectmock11.adapter.ViewPager2Adapter
+import com.vti.charityprojectmock11.view.detail.tabdetail.adapter.ViewPager2Adapter
 import com.vti.charityprojectmock11.databinding.FragmentProgramBinding
 import com.vti.charityprojectmock11.model.DonateProgram
 import com.vti.charityprojectmock11.viewmodel.detail.DetailDonateViewModel
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 
 class ProgramFragment : Fragment() {
@@ -69,9 +67,14 @@ class ProgramFragment : Fragment() {
                 binding.tvTitle.text = donateProgram.name
                 binding.tvProcess.text =
                     donateProgram.currentMoney.toString() + "/" + donateProgram.targetMoney.toString()
-                binding.pbProgramProcess.progress =
-                    (donateProgram.currentMoney!!.div(donateProgram.targetMoney!!)
-                        .times(100)).toInt()
+                if (donateProgram.currentMoney!! < donateProgram.targetMoney!!) {
+                    binding.pbProgramProcess.progress =
+                        (donateProgram.currentMoney!!.div(donateProgram.targetMoney!!)
+                            .times(100)).toInt()
+                } else {
+                    binding.pbProgramProcess.progress = 100
+                }
+
                 binding.tvCurrentDonationAmount.text =
                     (donateProgram.currentMoney!!.div(donateProgram.targetMoney!!)
                         .times(100)).toInt().toString() + "%"
@@ -93,12 +96,15 @@ class ProgramFragment : Fragment() {
 
     private fun putToList(donateProgram: DonateProgram) {
         //call api get image
+        imageList.add(donateProgram.mainImage.toString())
         imageList.add(donateProgram.subImage1.toString())
         imageList.add(donateProgram.subImage2.toString())
         imageList.add(donateProgram.subImage3.toString())
-//        addToList(R.drawable.ic_launcher_foreground)
-//        addToList(R.drawable.ic_baseline_supervised_user_circle_24)
-//        addToList(R.drawable.ic_dashboard_black_24dp)
-//        addToList(R.drawable.ic_notifications_black_24dp)
+
+//        imageList.add(R.drawable.ic_baseline_arrow_back_ios_24)
+//        imageList.add(R.drawable.ic_notifications_black_24dp)
+//        imageList.add(R.drawable.ic_dashboard_black_24dp)
+//        imageList.add(R.drawable.ic_home_black_24dp)
+
     }
 }

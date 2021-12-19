@@ -17,6 +17,7 @@
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/item_donate_program.xml" value="0.264" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/menu/menu_main.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/drawable/btn_bg.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/drawable/et_bg.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/drawable/indicator_bg.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/drawable/processbar_bg.xml" value="0.16145833333333334" />
@@ -28,8 +29,9 @@
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/fragment_donator.xml" value="0.1453125" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/fragment_done_donate.xml" value="0.11322463768115942" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/fragment_help_donate.xml" value="0.10099637681159421" />
-        <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/fragment_program.xml" value="0.1" />
+        <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/fragment_program.xml" value="0.25" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/item_donate_program.xml" value="0.10099637681159421" />
+        <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/layout/item_new_donate_program.xml" value="0.11278195488721804" />
       </map>
     </option>
   </component>

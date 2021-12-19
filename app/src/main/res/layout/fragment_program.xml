@@ -9,6 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F6EAF0"
         tools:context=".view.detail.tabdetail.ProgramFragment">
 
         <androidx.viewpager2.widget.ViewPager2
@@ -63,7 +64,8 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tv_content" />
 
-        <androidx.core.widget.ContentLoadingProgressBar
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:id="@+id/pb_program_process"
             android:layout_width="match_parent"
             android:layout_height="10dp"
@@ -71,7 +73,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="30dp"
             android:progress="25"
-            android:background="@drawable/processbar_bg"
+            android:progressTint="@color/pink"
             android:max="100"
             app:layout_constraintTop_toBottomOf="@id/tv_process" />
 

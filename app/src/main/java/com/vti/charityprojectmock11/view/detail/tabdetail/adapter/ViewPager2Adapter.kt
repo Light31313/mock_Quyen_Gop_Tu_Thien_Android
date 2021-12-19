@@ -1,4 +1,4 @@
-package com.vti.charityprojectmock11.adapter
+package com.vti.charityprojectmock11.view.detail.tabdetail.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
