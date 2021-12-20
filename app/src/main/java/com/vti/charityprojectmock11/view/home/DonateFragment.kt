@@ -3,8 +3,7 @@ package com.vti.charityprojectmock11.view.home
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 
 import com.vti.charityprojectmock11.base.BaseFragment
@@ -18,10 +17,10 @@ import kotlinx.coroutines.*
 
 
 class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdapter {
-    private val viewModel: DonateViewModel by viewModels()
+    private val viewModel: DonateViewModel by activityViewModels()
     private lateinit var donateProgramAdapter: DonateProgramAdapter
     private lateinit var newDonateProgramAdapter: NewDonateProgramAdapter
-    private lateinit var coroutine: CoroutineScope
+    private var swipeScreenJob: Job? = null
 
     override fun createBinding(
         inflater: LayoutInflater,
@@ -31,16 +30,18 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
 
     override fun onStart() {
         super.onStart()
-        coroutine = CoroutineScope(Dispatchers.Default)
-        coroutine.launch {
+
+        swipeScreenJob = CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 delay(5000)
                 withContext(Dispatchers.Main) {
-                    binding.vpNewPrograms.apply {
-                        if (currentItem < viewModel.totalPrograms!! - 1)
-                            currentItem += 1
-                        else
-                            currentItem = 0
+                    if (isActive) {
+                        binding.vpNewPrograms.apply {
+                            if (currentItem < viewModel.totalRunningPrograms!! - 1)
+                                currentItem += 1
+                            else
+                                currentItem = 0
+                        }
                     }
                 }
             }
@@ -48,7 +49,8 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
     }
 
     override fun observerLiveData() {
-        viewModel.donatePrograms.observe(viewLifecycleOwner, { donatePrograms ->
+        viewModel.runningDonatePrograms.observe(viewLifecycleOwner, { donatePrograms ->
+
             donateProgramAdapter.submitList(donatePrograms)
             newDonateProgramAdapter.submitList(donatePrograms)
         })
@@ -63,18 +65,10 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
 
     }
 
-    override fun initComponent() {
-        viewModel.getAllDonatePrograms()
-        binding.viewModel = viewModel
-
-    }
-
-    override fun initEvent() {
-
-    }
 
     override fun onStop() {
-        coroutine.cancel()
+        swipeScreenJob?.cancel()
+        swipeScreenJob = null
         super.onStop()
     }
 
@@ -83,6 +77,5 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
             DonateFragmentDirections.actionNavigationDonateToDetailDonateFragment(donateProgram)
         findNavController().navigate(action)
     }
-
 
 }

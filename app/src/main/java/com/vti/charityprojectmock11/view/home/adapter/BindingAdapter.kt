@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.vti.charityprojectmock11.R
 import java.text.DecimalFormat
-import java.text.NumberFormat
+
 
 @BindingAdapter("imageUrl")
 fun ImageView.loadImage(imageUrl: String) {
@@ -28,7 +28,6 @@ fun ProgressBar.showProgress(currentMoney: Float, totalMoney: Float) {
 
 @BindingAdapter("currentMoneyText")
 fun TextView.convertToCurrentMoneyFormat(money: Float) {
-
     val formatter = DecimalFormat("###,###,###")
     val text = "${formatter.format(money)}đ"
     this.text = text

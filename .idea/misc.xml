@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/background_time_remain.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/button_donate_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/item_new_donate_program.xml" value="0.14322916666666666" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_detail_donate.xml" value="0.25" />
-        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate.xml" value="0.25" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate.xml" value="0.152" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate_activities.xml" value="0.25" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate_instruct.xml" value="0.25" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donator.xml" value="0.2359375" />
@@ -15,6 +18,8 @@
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_program.xml" value="0.25" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/ic_baseline_supervised_user_circle_24.xml" value="0.12708333333333333" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/item_donate_program.xml" value="0.264" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/item_new_donate_program.xml" value="0.12708333333333333" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/item_stop_donate_program.xml" value="0.25" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/menu/menu_main.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/admin/Desktop/mock_Quyen_Gop_Tu_Thien_Android/app/src/main/res/drawable/btn_bg.xml" value="0.19583333333333333" />
