@@ -45,5 +45,6 @@ class DetailDonateFragment : Fragment() {
         }.attach()
 
         viewModel.setDonateProgram(args.donateProgram)
+
     }
 }
