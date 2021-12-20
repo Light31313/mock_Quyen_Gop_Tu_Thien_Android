@@ -20,7 +20,7 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
     private val viewModel: DonateViewModel by activityViewModels()
     private lateinit var donateProgramAdapter: DonateProgramAdapter
     private lateinit var newDonateProgramAdapter: NewDonateProgramAdapter
-    private lateinit var coroutine: CoroutineScope
+    private var swipeScreenJob: Job? = null
 
     override fun createBinding(
         inflater: LayoutInflater,
@@ -30,16 +30,18 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
 
     override fun onStart() {
         super.onStart()
-        coroutine = CoroutineScope(Dispatchers.Default)
-        coroutine.launch {
+
+        swipeScreenJob = CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 delay(5000)
                 withContext(Dispatchers.Main) {
-                    binding.vpNewPrograms.apply {
-                        if (currentItem < viewModel.totalRunningPrograms!! - 1)
-                            currentItem += 1
-                        else
-                            currentItem = 0
+                    if (isActive) {
+                        binding.vpNewPrograms.apply {
+                            if (currentItem < viewModel.totalRunningPrograms!! - 1)
+                                currentItem += 1
+                            else
+                                currentItem = 0
+                        }
                     }
                 }
             }
@@ -65,7 +67,8 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
 
 
     override fun onStop() {
-        coroutine.cancel()
+        swipeScreenJob?.cancel()
+        swipeScreenJob = null
         super.onStop()
     }
 
