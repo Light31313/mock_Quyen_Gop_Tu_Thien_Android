@@ -97,9 +97,9 @@ class ProgramFragment : Fragment() {
     private fun putToList(donateProgram: DonateProgram) {
         //call api get image
         imageList.add(donateProgram.mainImage.toString())
-        imageList.add(donateProgram.subImage1.toString())
-        imageList.add(donateProgram.subImage2.toString())
-        imageList.add(donateProgram.subImage3.toString())
+        //imageList.add(donateProgram.subImage1.toString())
+        //imageList.add(donateProgram.subImage2.toString())
+        //imageList.add(donateProgram.subImage3.toString())
 
 //        imageList.add(R.drawable.ic_baseline_arrow_back_ios_24)
 //        imageList.add(R.drawable.ic_notifications_black_24dp)

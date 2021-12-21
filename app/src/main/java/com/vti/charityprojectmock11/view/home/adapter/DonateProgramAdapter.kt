@@ -17,7 +17,13 @@ class DonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
 
         fun bind(donateProgram: DonateProgram) = with(binding) {
             this.donateProgram = donateProgram
-            clDonateProgram.setOnClickListener {
+            imgProgram.setOnClickListener {
+                iDonateProgramAdapter.onClickShowDetail(donateProgram)
+            }
+            txtProgramName.setOnClickListener {
+                iDonateProgramAdapter.onClickShowDetail(donateProgram)
+            }
+            btnDonate.setOnClickListener {
                 iDonateProgramAdapter.onClickShowDetail(donateProgram)
             }
         }

@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.Call
 
 interface DonateProgramService {
-    @GET("/donateProgram")
+    @GET("programs")
     fun getAllDonatePrograms(): Call<List<DonateProgram>>
+
 }

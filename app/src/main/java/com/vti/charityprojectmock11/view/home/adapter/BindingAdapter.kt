@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.vti.charityprojectmock11.R
 import java.text.DecimalFormat
+import java.util.*
 
 
 @BindingAdapter("imageUrl")
@@ -38,4 +39,13 @@ fun TextView.convertToTargetMoneyFormat(money: Float) {
     val formatter = DecimalFormat("###,###,###")
     val text = "/ ${formatter.format(money)}đ"
     this.text = text
+}
+
+@BindingAdapter("endDate")
+fun TextView.getRemainDays(endDate: Date) {
+    val remainDays = ((endDate.time - Calendar.getInstance().time.time)/(1000*60*60*24)).toInt()
+    if (remainDays >= 0)
+        this.text = resources.getString(R.string.time_remain, remainDays)
+    else
+        this.text = resources.getString(R.string.stop)
 }
