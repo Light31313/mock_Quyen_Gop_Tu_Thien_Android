@@ -23,6 +23,7 @@ class DonateViewModel : ViewModel() {
                         .filter { donateProgram -> donateProgram.state == "running" }
                     _stopDonatePrograms.value =
                         response.body()!!.filter { donateProgram -> donateProgram.state == "stop" }
+                    Log.d("DonateProgramRepository", "onResponse: ${response.body()?.get(0)}")
                 }
 
             }

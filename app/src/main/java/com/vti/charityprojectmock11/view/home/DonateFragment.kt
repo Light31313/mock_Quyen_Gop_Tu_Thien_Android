@@ -37,6 +37,8 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
                 withContext(Dispatchers.Main) {
                     if (isActive) {
                         binding.vpNewPrograms.apply {
+                            if (viewModel.totalRunningPrograms == null)
+                                return@apply
                             if (currentItem < viewModel.totalRunningPrograms!! - 1)
                                 currentItem += 1
                             else
