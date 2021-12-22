@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_donate"
-        android:name="com.vti.charityprojectmock11.view.home.DonateFragment"
+        android:name="com.vti.charityprojectmock11.view.home.DonateProgramFragment"
         android:label="@string/donate"
-        tools:layout="@layout/fragment_donate" >
+        tools:layout="@layout/fragment_donate_program" >
         <action
             android:id="@+id/action_navigation_donate_to_detailDonateFragment"
             app:destination="@id/detailDonateFragment"
@@ -27,9 +27,9 @@
 
     <fragment
         android:id="@+id/navigation_done_donate"
-        android:name="com.vti.charityprojectmock11.view.home.DoneDonateFragment"
+        android:name="com.vti.charityprojectmock11.view.home.StopDonateProgramFragment"
         android:label="@string/done_donate"
-        tools:layout="@layout/fragment_done_donate" >
+        tools:layout="@layout/fragment_stop_donate_program" >
         <action
             android:id="@+id/action_navigation_done_donate_to_detailDonateFragment"
             app:destination="@id/detailDonateFragment" />

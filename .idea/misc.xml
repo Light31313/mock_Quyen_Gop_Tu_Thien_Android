@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/background_new_program_transparent.xml" value="0.2611111111111111" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/background_time_remain.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/button_donate_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/default_dot.xml" value="0.14322916666666666" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/indicator_bg.xml" value="0.2611111111111111" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/item_new_donate_program.xml" value="0.14322916666666666" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/selected_dot.xml" value="0.14322916666666666" />
+        <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/drawable/tab_selector.xml" value="0.14322916666666666" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_detail_donate.xml" value="0.25" />
         <entry key="..\:/Android Studio/CharityProjectMock11/app/src/main/res/layout/fragment_donate.xml" value="0.152" />

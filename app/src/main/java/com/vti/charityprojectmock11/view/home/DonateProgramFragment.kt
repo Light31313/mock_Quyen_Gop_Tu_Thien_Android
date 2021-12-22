@@ -1,32 +1,37 @@
 package com.vti.charityprojectmock11.view.home
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.tabs.TabLayoutMediator
 
 import com.vti.charityprojectmock11.base.BaseFragment
-import com.vti.charityprojectmock11.databinding.FragmentDonateBinding
+import com.vti.charityprojectmock11.databinding.FragmentDonateProgramBinding
 import com.vti.charityprojectmock11.model.DonateProgram
 import com.vti.charityprojectmock11.view.home.adapter.DonateProgramAdapter
 import com.vti.charityprojectmock11.view.home.adapter.IDonateProgramAdapter
 import com.vti.charityprojectmock11.view.home.adapter.NewDonateProgramAdapter
-import com.vti.charityprojectmock11.viewmodel.home.DonateViewModel
+import com.vti.charityprojectmock11.viewmodel.home.DonateProgramViewModel
 import kotlinx.coroutines.*
 
 
-class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdapter {
-    private val viewModel: DonateViewModel by activityViewModels()
+class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDonateProgramAdapter {
+    private val viewModel: DonateProgramViewModel by viewModels()
     private lateinit var donateProgramAdapter: DonateProgramAdapter
     private lateinit var newDonateProgramAdapter: NewDonateProgramAdapter
+
+    private val currentNewRunningDonatePrograms = mutableListOf<DonateProgram>()
+
     private var swipeScreenJob: Job? = null
 
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentDonateBinding = FragmentDonateBinding.inflate(layoutInflater, container, false)
+    ): FragmentDonateProgramBinding = FragmentDonateProgramBinding.inflate(layoutInflater, container, false)
 
     override fun onStart() {
         super.onStart()
@@ -39,7 +44,7 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
                         binding.vpNewPrograms.apply {
                             if (viewModel.totalRunningPrograms == null)
                                 return@apply
-                            if (currentItem < viewModel.totalRunningPrograms!! - 1)
+                            if (currentItem < NewDonateProgramAdapter.NUMBER_OF_PROGRAMS - 1)
                                 currentItem += 1
                             else
                                 currentItem = 0
@@ -50,21 +55,31 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
         }
     }
 
+
     override fun observerLiveData() {
         viewModel.runningDonatePrograms.observe(viewLifecycleOwner, { donatePrograms ->
 
             donateProgramAdapter.submitList(donatePrograms)
-            newDonateProgramAdapter.submitList(donatePrograms)
+
+            if (donatePrograms.size >= 4) {
+                currentNewRunningDonatePrograms.clear()
+                currentNewRunningDonatePrograms.addAll(donatePrograms.sorted().subList(0, 4))
+                newDonateProgramAdapter.notifyItemRangeChanged(0, 4)
+            }
+
         })
     }
 
     override fun initView() {
         donateProgramAdapter = DonateProgramAdapter(this)
-        newDonateProgramAdapter = NewDonateProgramAdapter(this)
 
-        binding.rvDonatePrograms.adapter = donateProgramAdapter
-        binding.vpNewPrograms.adapter = newDonateProgramAdapter
+        newDonateProgramAdapter = NewDonateProgramAdapter(currentNewRunningDonatePrograms, this)
 
+        binding.apply {
+            rvDonatePrograms.adapter = donateProgramAdapter
+            vpNewPrograms.adapter = newDonateProgramAdapter
+            TabLayoutMediator(tlNewPrograms, vpNewPrograms) { _, _ -> }.attach()
+        }
     }
 
 
@@ -76,7 +91,7 @@ class DonateFragment : BaseFragment<FragmentDonateBinding>(), IDonateProgramAdap
 
     override fun onClickShowDetail(donateProgram: DonateProgram) {
         val action =
-            DonateFragmentDirections.actionNavigationDonateToDetailDonateFragment(donateProgram)
+            DonateProgramFragmentDirections.actionNavigationDonateToDetailDonateFragment(donateProgram)
         findNavController().navigate(action)
     }
 
