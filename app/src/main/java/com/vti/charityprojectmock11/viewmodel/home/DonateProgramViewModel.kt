@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DonateViewModel : ViewModel() {
+class DonateProgramViewModel : ViewModel() {
     init {
         DonateProgramRepository.getAllDonatePrograms().enqueue(object :
             Callback<List<DonateProgram>> {
@@ -21,8 +21,7 @@ class DonateViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _runningDonatePrograms.value = response.body()!!
                         .filter { donateProgram -> donateProgram.state == "running" }
-                    _stopDonatePrograms.value =
-                        response.body()!!.filter { donateProgram -> donateProgram.state == "stop" }
+
                     Log.d("DonateProgramRepository", "onResponse: ${response.body()?.get(0)}")
                 }
 
@@ -36,13 +35,10 @@ class DonateViewModel : ViewModel() {
     }
 
 
-    private val _runningDonatePrograms = MutableLiveData<List<DonateProgram>>()
+    private val _runningDonatePrograms = MutableLiveData<List<DonateProgram>>(listOf())
     val runningDonatePrograms: LiveData<List<DonateProgram>>
         get() = _runningDonatePrograms
 
-    private val _stopDonatePrograms = MutableLiveData<List<DonateProgram>>()
-    val stopDonatePrograms: LiveData<List<DonateProgram>>
-        get() = _stopDonatePrograms
 
     val totalRunningPrograms
         get() = _runningDonatePrograms.value?.size

@@ -24,7 +24,7 @@ data class DonateProgram(
     @SerializedName(Constant.donateProgramSubImage)
     val subImages: List<String>?,
     @SerializedName(Constant.donateProgramStartDate)
-    val startDate: Date?,
+    val startDate: Date = Date(),
     @SerializedName(Constant.donateProgramEndDate)
     val endDate: Date?,
     @SerializedName(Constant.donateProgramTargetMoney)
@@ -35,8 +35,11 @@ data class DonateProgram(
     val state: String?,
     @SerializedName(Constant.donateProgramDonates)
     val donates: List<DonateForm> = listOf()
-) : Parcelable {
+) : Parcelable, Comparable<DonateProgram> {
     @IgnoredOnParcel
     val donateTimes: String
         get() = donates.size.toString()
+
+    override fun compareTo(other: DonateProgram): Int =
+        this.startDate.time.compareTo(other.startDate.time)
 }
