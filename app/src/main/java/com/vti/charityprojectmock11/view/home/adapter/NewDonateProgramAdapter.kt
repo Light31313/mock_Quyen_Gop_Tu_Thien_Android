@@ -2,38 +2,55 @@ package com.vti.charityprojectmock11.view.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.vti.charityprojectmock11.databinding.ItemNewDonateProgramBinding
 import com.vti.charityprojectmock11.model.DonateProgram
 
 
-class NewDonateProgramAdapter(
-    private val newDonatePrograms: List<DonateProgram>,
-    private val iDonateProgramAdapter: IDonateProgramAdapter
-) :
-    RecyclerView.Adapter<NewDonateProgramAdapter.NewDonateProgramViewHolder>() {
-    companion object {
-        const val NUMBER_OF_PROGRAMS = 4
+class NewDonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
+    ListAdapter<DonateProgram, NewDonateProgramAdapter.NewDonateProgramViewHolder>(diffCallback) {
+
+    inner class NewDonateProgramViewHolder(
+        private val binding: ItemNewDonateProgramBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(donateProgram: DonateProgram) = with(binding) {
+            this.donateProgram = donateProgram
+            flProgram.setOnClickListener {
+                iDonateProgramAdapter.onClickShowDetail(donateProgram)
+            }
+        }
+
     }
 
-    inner class NewDonateProgramViewHolder(val binding: ItemNewDonateProgramBinding) :
-        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewDonateProgramViewHolder {
         val binding =
             ItemNewDonateProgramBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NewDonateProgramViewHolder(binding)
+
     }
 
     override fun onBindViewHolder(holder: NewDonateProgramViewHolder, position: Int) {
-        val newDonateProgram = newDonatePrograms[position]
-
-        holder.binding.donateProgram = newDonateProgram
-        holder.binding.flProgram.setOnClickListener {
-            iDonateProgramAdapter.onClickShowDetail(newDonateProgram)
-        }
+        holder.bind(currentList[position])
     }
 
-    override fun getItemCount(): Int = newDonatePrograms.size
+
+    companion object {
+        private val diffCallback = object : DiffUtil.ItemCallback<DonateProgram>() {
+            override fun areItemsTheSame(oldItem: DonateProgram, newItem: DonateProgram): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: DonateProgram,
+                newItem: DonateProgram
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

@@ -9,7 +9,7 @@ import com.vti.charityprojectmock11.databinding.ItemDonateProgramBinding
 import com.vti.charityprojectmock11.model.DonateProgram
 
 class DonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
-    ListAdapter<DonateProgram, DonateProgramAdapter.DonateProgramViewHolder>(DiffCallback) {
+    ListAdapter<DonateProgram, DonateProgramAdapter.DonateProgramViewHolder>(diffCallback) {
 
     inner class DonateProgramViewHolder(
         private val binding: ItemDonateProgramBinding
@@ -44,7 +44,7 @@ class DonateProgramAdapter(val iDonateProgramAdapter: IDonateProgramAdapter) :
 
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<DonateProgram>() {
+        private val diffCallback = object : DiffUtil.ItemCallback<DonateProgram>() {
             override fun areItemsTheSame(oldItem: DonateProgram, newItem: DonateProgram): Boolean {
                 return oldItem.id == newItem.id
             }

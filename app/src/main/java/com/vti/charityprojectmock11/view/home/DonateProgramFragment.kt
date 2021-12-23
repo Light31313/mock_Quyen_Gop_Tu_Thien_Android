@@ -19,11 +19,13 @@ import kotlinx.coroutines.*
 
 
 class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDonateProgramAdapter {
+    companion object {
+        private const val NUMBER_OF_NEW_PROGRAMS = 4
+    }
+
     private val viewModel: DonateProgramViewModel by viewModels()
     private lateinit var donateProgramAdapter: DonateProgramAdapter
     private lateinit var newDonateProgramAdapter: NewDonateProgramAdapter
-
-    private val currentNewRunningDonatePrograms = mutableListOf<DonateProgram>()
 
     private var swipeScreenJob: Job? = null
 
@@ -31,7 +33,8 @@ class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDon
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentDonateProgramBinding = FragmentDonateProgramBinding.inflate(layoutInflater, container, false)
+    ): FragmentDonateProgramBinding =
+        FragmentDonateProgramBinding.inflate(layoutInflater, container, false)
 
     override fun onStart() {
         super.onStart()
@@ -44,7 +47,7 @@ class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDon
                         binding.vpNewPrograms.apply {
                             if (viewModel.totalRunningPrograms == null)
                                 return@apply
-                            if (currentItem < NewDonateProgramAdapter.NUMBER_OF_PROGRAMS - 1)
+                            if (currentItem < newDonateProgramAdapter.itemCount - 1)
                                 currentItem += 1
                             else
                                 currentItem = 0
@@ -60,12 +63,10 @@ class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDon
         viewModel.runningDonatePrograms.observe(viewLifecycleOwner, { donatePrograms ->
 
             donateProgramAdapter.submitList(donatePrograms)
-
-            if (donatePrograms.size >= 4) {
-                currentNewRunningDonatePrograms.clear()
-                currentNewRunningDonatePrograms.addAll(donatePrograms.sorted().subList(0, 4))
-                newDonateProgramAdapter.notifyItemRangeChanged(0, 4)
-            }
+            if (donatePrograms.size < NUMBER_OF_NEW_PROGRAMS)
+                newDonateProgramAdapter.submitList(donatePrograms.sorted())
+            else
+                newDonateProgramAdapter.submitList(donatePrograms.sorted().subList(0, 4))
 
         })
     }
@@ -73,7 +74,7 @@ class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDon
     override fun initView() {
         donateProgramAdapter = DonateProgramAdapter(this)
 
-        newDonateProgramAdapter = NewDonateProgramAdapter(currentNewRunningDonatePrograms, this)
+        newDonateProgramAdapter = NewDonateProgramAdapter(this)
 
         binding.apply {
             rvDonatePrograms.adapter = donateProgramAdapter
@@ -91,7 +92,9 @@ class DonateProgramFragment : BaseFragment<FragmentDonateProgramBinding>(), IDon
 
     override fun onClickShowDetail(donateProgram: DonateProgram) {
         val action =
-            DonateProgramFragmentDirections.actionNavigationDonateToDetailDonateFragment(donateProgram)
+            DonateProgramFragmentDirections.actionNavigationDonateToDetailDonateFragment(
+                donateProgram
+            )
         findNavController().navigate(action)
     }
 
