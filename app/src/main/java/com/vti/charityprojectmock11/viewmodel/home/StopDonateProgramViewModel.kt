@@ -19,8 +19,11 @@ class StopDonateProgramViewModel : ViewModel() {
                 response: Response<List<DonateProgram>>
             ) {
                 if (response.isSuccessful) {
-                    _stopDonatePrograms.value =
-                        response.body()!!.filter { donateProgram -> donateProgram.state == "stop" }
+                    response.body()?.let {
+                        _stopDonatePrograms.value =
+                            it.filter { donateProgram -> donateProgram.state == "stop" }
+                    }
+
                     Log.d("DonateProgramRepository", "onResponse: ${response.body()?.get(0)}")
                 }
 

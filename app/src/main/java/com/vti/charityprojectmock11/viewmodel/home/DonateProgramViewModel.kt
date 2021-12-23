@@ -19,8 +19,10 @@ class DonateProgramViewModel : ViewModel() {
                 response: Response<List<DonateProgram>>
             ) {
                 if (response.isSuccessful) {
-                    _runningDonatePrograms.value = response.body()!!
-                        .filter { donateProgram -> donateProgram.state == "running" }
+                    response.body()?.let {
+                        _runningDonatePrograms.value = it
+                            .filter { donateProgram -> donateProgram.state == "running" }
+                    }
 
                     Log.d("DonateProgramRepository", "onResponse: ${response.body()?.get(0)}")
                 }
@@ -35,7 +37,7 @@ class DonateProgramViewModel : ViewModel() {
     }
 
 
-    private val _runningDonatePrograms = MutableLiveData<List<DonateProgram>>(listOf())
+    private val _runningDonatePrograms = MutableLiveData<List<DonateProgram>>()
     val runningDonatePrograms: LiveData<List<DonateProgram>>
         get() = _runningDonatePrograms
 
